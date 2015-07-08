@@ -2,19 +2,26 @@
 window.onload = function(){
 
 	function init(){
+
 		//creating new stage instance
 		var stage = new createjs.Stage("myStage");
 
-		//making a circle
-		var circle = new createjs.Shape();
+		var data = new createjs.SpriteSheet({
+			"images":["./mario.jpg"],
+			"frames":{"height":46, "count": 20, "width": 46},
+			"animations":{"run":[0,9]}
+		});
 
-		circle.graphics.beginFill("red").drawCircle(0,0,50);
-		circle.x = 100;
-		circle.y = 100;
+		var mario = new createjs.Sprite(data,"run");
+		mario.scaleY = mario.scaleX = 3; 
+		stage.addChild(mario);
 
-		stage.addChild(circle);
-		stage.update();
+		mario.on("click", function(){
+			mario.gotoAndPlay();
+			console.log("Click!");
+		});
+
+		createjs.Ticker.on("tick", stage);	
 	}
-	console.log('tings is runnin!');
 	init();
 };
