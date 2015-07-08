@@ -9,7 +9,7 @@ window.onload = function(){
 		var data = new createjs.SpriteSheet({
 			"images":["./mario.jpg"],
 			"frames":{"height":46, "count": 20, "width": 46},
-			"animations":{"run":[0,9]}
+			"animations":{"run":[0,4]}
 		});
 
 		var mario = new createjs.Sprite(data,"run");
